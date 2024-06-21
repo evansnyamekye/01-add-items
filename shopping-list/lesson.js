@@ -1,3 +1,4 @@
+//Variables Declaration for the shopping App
 const itemForm = document.getElementById("item-form");
 const itemInput = document.getElementById("item-input");
 const itemList = document.getElementById("item-list");
@@ -8,14 +9,11 @@ function addItem(e) {
   e.preventDefault();
 
   const newItem = itemInput.value;
-
-  // Validate Input
   if (newItem === "") {
     alert("Please add an item");
     return;
   }
 
-  // Create list item
   const li = document.createElement("li");
   li.appendChild(document.createTextNode(newItem));
 
@@ -24,11 +22,9 @@ function addItem(e) {
 
   itemList.appendChild(li);
 
-  checkUI(); 
+  checkUI();
 
   itemInput.value = "";
-
-  newItem = "";
 }
 
 function createButton(classes) {
@@ -47,8 +43,10 @@ function createIcon(classes) {
 
 function removeItem(e) {
   if (e.target.parentElement.classList.contains("remove-item")) {
-    if (confirm('Are you sure'))
+    if (confirm("Are you sure to clear the Maintenance schedule?"));
     e.target.parentElement.parentElement.remove();
+
+    checkUI();
   }
 }
 
@@ -56,10 +54,20 @@ function clearItems() {
   while (itemList.firstChild) {
     itemList.removeChild(itemList.firstChild);
   }
+  checkUI(); 
+}
+
+function filterItems(e){
+  const items = itemList.querySelectorAll('li');
+  const text = e.target.value.toUpperCase(); 
+
+  items.forEach(item =>{
+    
+  })
 }
 
 function checkUI() {
-  const items = itemList.querySelectorAll("li");
+  const items = itemList.querySelectorAll('li');
   if (items.length === 0) {
     clearBtn.style.display = "none";
     itemFilter.style.display = "none";
@@ -69,10 +77,10 @@ function checkUI() {
   }
 }
 
-// Event Listeners
+//Event listner
 itemForm.addEventListener("submit", addItem);
 itemList.addEventListener("click", removeItem);
 clearBtn.addEventListener("click", clearItems);
+itemFilter.addEventListener("input", filterItems);
 
-//check User interface
 checkUI();
