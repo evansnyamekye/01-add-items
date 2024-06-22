@@ -59,11 +59,11 @@ function clearItems() {
 
 function filterItems(e){
   const items = itemList.querySelectorAll('li');
-  const text = e.target.value.toUpperCase(); 
+  const text = e.target.value.toLowerCase(); 
 
-  items.forEach(item =>{
-    
-  })
+  items.forEach(item => {
+    const itemName  = item.firstChild.textContent.toLowerCase(); 
+  });
 }
 
 function checkUI() {
@@ -81,6 +81,6 @@ function checkUI() {
 itemForm.addEventListener("submit", addItem);
 itemList.addEventListener("click", removeItem);
 clearBtn.addEventListener("click", clearItems);
-itemFilter.addEventListener("input", filterItems);
+itemFilter.addEventListener("input", filterItems)
 
 checkUI();
