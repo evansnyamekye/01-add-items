@@ -5,7 +5,7 @@ const itemList = document.getElementById("item-list");
 const clearBtn = document.getElementById("clear");
 const itemFilter = document.getElementById("filter");
 
-function addItem(e) {
+function addItemOnSubmit(e) {
   e.preventDefault();
 
   const newItem = itemInput.value;
@@ -13,19 +13,47 @@ function addItem(e) {
     alert("Please add an item");
     return;
   }
+ 
+  //create item DOM element 
+  addItemToDom(newItem);
 
+  //Add item to local storage 
+  addItemToStorage(newItem);
+
+  
+  checkUI();
+
+  itemInput.value = "";
+}
+
+function addItemToDom(item){
   const li = document.createElement("li");
-  li.appendChild(document.createTextNode(newItem));
+  li.appendChild(document.createTextNode(item));
 
   const button = createButton("remove-item btn-link text-red");
   li.appendChild(button);
 
   itemList.appendChild(li);
-
-  checkUI();
-
-  itemInput.value = "";
 }
+
+
+function addItemToStorage(item){
+ let itemsFromStorasge; 
+
+ if (localStorage.getItem('items') === null) {
+  itemsFromStorasge = []; 
+ } else {
+  itemsFromStorasge.JSON.parse(localStorage.getItem('items'))
+ }
+
+ //Add a new item to array 
+ itemsFromStorasge.push(item)
+
+ //convert to JSON String and set to localstorage 
+ localStorage.setItem('items', JSON.stringify(itemsFromStorasge)); 
+}
+
+
 
 function createButton(classes) {
   const button = document.createElement("button");
@@ -60,9 +88,15 @@ function clearItems() {
 function filterItems(e){
   const items = itemList.querySelectorAll('li');
   const text = e.target.value.toLowerCase(); 
-
-  items.forEach(item => {
+ 
+  items.forEach((item) => {
     const itemName  = item.firstChild.textContent.toLowerCase(); 
+
+    if (itemName.indexOf(text) != -1){
+      item.style.display = 'flex';1
+    } else {
+      item.style.display = 'none';
+    }
   });
 }
 
@@ -78,7 +112,7 @@ function checkUI() {
 }
 
 //Event listner
-itemForm.addEventListener("submit", addItem);
+itemForm.addEventListener("submit", addItemOnSubmit);
 itemList.addEventListener("click", removeItem);
 clearBtn.addEventListener("click", clearItems);
 itemFilter.addEventListener("input", filterItems)
