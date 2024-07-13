@@ -1,8 +1,9 @@
 const itemForm = document.getElementById('item-form');
 const itemInput = document.getElementById('item-input');
 const itemList = document.getElementById('item-list');
+
 const clearBtn = document.getElementById('clear');
-const itemFilter = document.getElementById('filter');
+
 
 function onAddItemSubmit(e) {
   e.preventDefault();
@@ -21,10 +22,12 @@ function onAddItemSubmit(e) {
   // Add item to local storage
   addItemToStorage(newItem);
 
+
   checkUI();
 
   itemInput.value = '';
 }
+
 
 function addItemToDOM(item) {
   // Create list item
@@ -36,6 +39,9 @@ function addItemToDOM(item) {
 
   // Add li to the DOM
   itemList.appendChild(li);
+
+  itemInput.value = '';
+
 }
 
 function createButton(classes) {
@@ -51,6 +57,7 @@ function createIcon(classes) {
   icon.className = classes;
   return icon;
 }
+
 
 function addItemToStorage(item) {
   let itemsFromStorage;
@@ -120,3 +127,4 @@ clearBtn.addEventListener('click', clearItems);
 itemFilter.addEventListener('input', filterItems);
 
 checkUI();
+

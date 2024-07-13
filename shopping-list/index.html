@@ -12,13 +12,13 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="style.css" />
-    <title>Preventive Maintenece :Home</title>
+    <title>Shopping List</title>
   </head>
   <body>
     <div class="container">
       <header>
         <img src="images/note.png" alt="" />
-        <h1>ATM Service List</h1>
+        <h1>Shopping List</h1>
       </header>
       <form id="item-form">
         <div class="form-control">
@@ -27,12 +27,12 @@
             class="form-input"
             id="item-input"
             name="item"
-            placeholder="Enter Branch"
+            placeholder="Enter Item"
           />
         </div>
         <div class="form-control">
           <button type="submit" class="btn">
-            <i class="fa-solid fa-plus"></i> Add PM's
+            <i class="fa-solid fa-plus"></i> Add Item
           </button>
         </div>
       </form>
@@ -42,47 +42,11 @@
           type="text"
           class="form-input-filter"
           id="filter"
-          placeholder="Filter Branch"
+          placeholder="Filter Items"
         />
       </div>
 
       <ul id="item-list" class="items">
-        <!-- <li>
-          Apples
-          <button class="remove-item btn-link text-red">
-            <i class="fa-solid fa-xmark"></i>
-          </button>
-        </li>
-        <li>
-          Orange Juice
-          <button class="remove-item btn-link text-red">
-            <i class="fa-solid fa-xmark"></i>
-          </button>
-        </li>
-        <li>
-          Eggs
-          <button class="remove-item btn-link text-red">
-            <i class="fa-solid fa-xmark"></i>
-          </button>
-        </li>
-        <li>
-          cerals
-          <button class="remove-item btn-link text-red">
-            <i class="fa-solid fa-xmark"></i>
-          </button>
-        </li>
-        <li>
-          Eddeggs 
-          <button class="remove-item btn-link text-red">
-            <i class="fa-solid fa-xmark"></i>
-          </button>
-        </li>
-        <li>
-          bread
-          <button class="remove-item btn-link text-red">
-            <i class="fa-solid fa-xmark"></i>
-          </button>
-        </li>
         <li>
           Apples
           <button class="remove-item btn-link text-red">
@@ -102,16 +66,16 @@
           </button>
         </li>
         <li>
-          Eggsbowl
+          Milk
           <button class="remove-item btn-link text-red">
             <i class="fa-solid fa-xmark"></i>
           </button>
-        </li> -->
+        </li>
       </ul>
 
-      <button id="clear" class="btn-clear">Clear All PM's</button>
+      <button id="clear" class="btn-clear">Clear All</button>
     </div>
 
-    <script src="lesson.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
