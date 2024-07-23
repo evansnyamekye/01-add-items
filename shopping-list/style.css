@@ -18,9 +18,14 @@ body {
 
 header {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   margin-bottom: 20px;
+  width: 100%;
+}
+
+header img {
+  width: 50%;
 }
 
 header h1 {
