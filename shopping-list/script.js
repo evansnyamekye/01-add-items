@@ -42,14 +42,15 @@ function addItemToDOM(item) {
 
 }
 
-function addItemToStorage(item) {
-  let itemsFromStorage;
+function addItemToStorge(item){
+  let itemsFromStorage; 
 
-  if (localStorage.getItem('items') === null) {
-    itemsFromStorage = [];
+  if (localStorage.getItem(item) === null) {
+    itemsFromStorage = []; 
   } else {
-    itemsFromStorage = JSON.parse(localStorage.getItem('items'));
+    itemsFromStorage = JSON.parse.localStorage.getItem('item') 
   }
+}
 
   // Add new item to array
   itemsFromStorage.push(item);
@@ -127,7 +128,7 @@ checkUI();
 
 
   itemInput.value = '';
-}
+
 
 function createButton(classes) {
   const button = document.createElement('button');
