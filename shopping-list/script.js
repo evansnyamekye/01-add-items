@@ -5,8 +5,6 @@ const clearBtn = document.getElementById('clear');
 const itemFilter = document.getElementById('filter');
 
 function onAddItemSubmit(e) {
-
-function addItem(e) {
   e.preventDefault();
 
   const newItem = itemInput.value;
@@ -29,28 +27,25 @@ function addItem(e) {
 }
 
 function addItemToDOM(item) {
-
-
   // Create list item
   const li = document.createElement('li');
-  li.appendChild(document.createTextNode(newItem));
+  li.appendChild(document.createTextNode(item));
 
   const button = createButton('remove-item btn-link text-red');
   li.appendChild(button);
 
+  // Add li to the DOM
   itemList.appendChild(li);
-
 }
 
-function addItemToStorge(item){
-  let itemsFromStorage; 
+function addItemToStorage(item) {
+  let itemsFromStorage;
 
-  if (localStorage.getItem(item) === null) {
-    itemsFromStorage = []; 
+  if (localStorage.getItem('items') === null) {
+    itemsFromStorage = [];
   } else {
-    itemsFromStorage = JSON.parse.localStorage.getItem('item') 
+    itemsFromStorage = JSON.parse(localStorage.getItem('items'));
   }
-}
 
   // Add new item to array
   itemsFromStorage.push(item);
@@ -125,24 +120,3 @@ clearBtn.addEventListener('click', clearItems);
 itemFilter.addEventListener('input', filterItems);
 
 checkUI();
-
-
-  itemInput.value = '';
-
-
-function createButton(classes) {
-  const button = document.createElement('button');
-  button.className = classes;
-  const icon = createIcon('fa-solid fa-xmark');
-  button.appendChild(icon);
-  return button;
-}
-
-function createIcon(classes) {
-  const icon = document.createElement('i');
-  icon.className = classes;
-  return icon;
-}
-
-// Event Listeners
-itemForm.addEventListener('submit', addItem);
