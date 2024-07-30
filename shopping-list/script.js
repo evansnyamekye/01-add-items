@@ -27,6 +27,7 @@ function onAddItemSubmit(e) {
   // Add item to local storage
   addItemToStorage(newItem);
 
+  //
   checkUI();
 
   itemInput.value = '';
